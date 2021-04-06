@@ -15,18 +15,10 @@ export const mutations = {
   }
 }
 export const actions = {
-  register({ commit }, signupInfo) {
-    return Service.register(signupInfo).then(({ data }) => {
+  register({ commit }, registerInfo) {
+    return Service.register(registerInfo).then(({ data }) => {
       commit('SET_USER_DATA', data)
     })
-  },
-  login({ commit }, credentials) {
-    return Service.login(credentials).then(({ data }) => {
-      commit('SET_USER_DATA', data)
-    })
-  },
-  logout({ commit }) {
-    commit('CLEAR_USER_DATA')
   },
   nuxtClientInit({ commit }, { req }) {
     const userString = localStorage.getItem('user') // grab user data from local storage
@@ -38,9 +30,6 @@ export const actions = {
   }
 }
 export const getters = {
-  loggedIn(state) {
-    return !!state.user
-  },
   userInfo(state) {
     return state.user
   }
