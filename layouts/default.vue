@@ -1,5 +1,6 @@
 <template>
-  <v-app >
+  <v-app class="pa-0">
+    <!--Inicio v-nav-bar-->
     <v-navigation-drawer      
       app
       permanent
@@ -7,10 +8,10 @@
     
       <v-list>
          <v-list-item>
-              <v-img src="/vuetify-logo.svg"
+              <v-img src="/logo.png"
                max-height="150"
-  max-width="250"
-  contain
+              max-width="250"
+              contain
               ></v-img>
           </v-list-item>
         <v-list-item
@@ -29,23 +30,31 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer>
-    <v-main>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-main>
     <v-footer
       :absolute="!fixed"
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+
+      <span>&copy; Copyright GLI {{ new Date().getFullYear() }}</span>
     </v-footer>
+    </v-navigation-drawer>
+    <!--Fin v-nav-bar-->
+    <!-- Inicio v-app bar-->
+    <NavBar/>
+    <!-- Fin v-app bar-->
+    <v-main>
+        <nuxt />
+    </v-main>
   </v-app>
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue'
+
 export default {
+  components: {
+    NavBar
+  },
   data () {
     return {
       clipped: false,
@@ -55,7 +64,7 @@ export default {
         {
           icon: 'mdi-account-outline',
           title: 'Administradores',
-          to: '/administradores'
+          to: '/'
         },
         {
           icon: 'mdi-view-list-outline',
@@ -106,9 +115,11 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Vuetify.js',
+      overlay: false,
+      
     }
-  }
+  },
 }
 </script>
 <style scoped>
