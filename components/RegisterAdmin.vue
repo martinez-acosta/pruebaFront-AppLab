@@ -5,7 +5,6 @@
       v-model="name"
       :error-messages="nameErrors"
       label="Nombre(s)"
-      value="Nombre(s)"
       required
       outlined
       @input="$v.name.$touch()"
@@ -15,7 +14,6 @@
       v-model="surname"
       :error-messages="surnameErrors"
       label="Apellidos(s)"
-      value="Apellidos(s)"
       required
       outlined
       @input="$v.surname.$touch()"
@@ -25,7 +23,6 @@
       v-model="email"
       :error-messages="emailErrors"
       label="Correo electrónico"
-      value="Correo electrónico"
       type="email"
       outlined
       required
@@ -69,11 +66,6 @@ export default {
     name: { required, maxLength: maxLength(40) },
     surname: { required, maxLength: maxLength(40) },
     email: { required, email },
-    checkbox: {
-      checked(val) {
-        return val;
-      },
-    },
   },
 
   data() {
@@ -135,7 +127,7 @@ export default {
           estatus: this.estatusSelect
         })
         .then(() => {
-          //this.$router.push({ name: 'login' })
+          this.$router.push({ name: 'index' })
         })
         .catch((err) => {
           this.$nuxt.$loading.fail();

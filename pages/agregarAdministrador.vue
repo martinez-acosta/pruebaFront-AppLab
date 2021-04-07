@@ -2,7 +2,7 @@
     <v-container fluid ma-8>
         <v-row>
             <p>
-        Inicio <v-icon small color="#4DB6AC">mdi-greater-than</v-icon> <span style="color:#4DB6AC">{{ $nuxt.$route.name }}</span> 
+        Inicio <v-icon small color="#4DB6AC">mdi-greater-than</v-icon> <span style="color:#4DB6AC">Administradores</span> 
              </p>
         </v-row>
         <v-row>
