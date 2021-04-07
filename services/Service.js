@@ -17,6 +17,9 @@ export default {
     const ip = await apiClient.post('/admin', registerInfo)
     return ip
   },
+  async getAdmins() {
+    return await apiClient.get('/admin', {})
+  },
   setToken(userData) {
     //axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`
   }

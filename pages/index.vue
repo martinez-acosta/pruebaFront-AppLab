@@ -23,7 +23,7 @@
         <v-icon color="primary"> mdi-filter-outline </v-icon>
       </v-col>
       <v-col cols="2">
-        <v-btn depressed>Descargar</v-btn>
+        <v-btn depressed @click="axiosGetAdmins">Descargar</v-btn>
       </v-col>
       <v-col cols="2">
         <v-btn depressed color="primary" to="agregarAdministrador" nuxt>Agrergar nuevo admin</v-btn>
@@ -33,7 +33,7 @@
       <v-card width="100vw">
         <v-data-table
           :headers="headers"
-          :items="desserts"
+          :items="admins"
           :items-per-page="10"
           class="elevation-1"
         >
@@ -54,30 +54,42 @@ export default {
     return {
       headers: [
         {
-          text: "Administradores",
+          text: "Nombre(s)",
           align: "start",
           sortable: false,
           value: "name",
         },
+        { text: "Apellido(s)", value: "surname",},
+        { text: "Correo electrónico", value: "email" },
         { text: "Área", value: "area" },
         { text: "Estatus", value: "estatus" },
         { text: "Detalles", value: "detalles" },
       ],
-      desserts: [
-        {
-          name: "Frozen Yogurt",
-          area: "recursos humanos",
-          estatus: "activo",
-          detalles: "detalles",
-        },
-      ],
+      admins: [],
     };
   },
    methods: {
       getColor (estatus) {
-        if (estatus == "activo") return 'green'
+        if (estatus == "Activo") return 'green'
         else return 'red'
       },
+      axiosGetAdmins(){
+        this.$nuxt.$loading.start()
+      this.$store
+        .dispatch('calls/getAdmins')
+        .then((response) => {
+          this.$nuxt.$loading.finish()
+          console.log(response.data)
+          this.admins = response.data
+        })
+        .catch(() => {
+          this.$nuxt.$loading.fail()
+          this.$nuxt.$loading.finish()
+        })
+      }
+    },
+    mounted(){
+      this.axiosGetAdmins()
     }
 };
 </script>

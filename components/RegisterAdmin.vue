@@ -118,7 +118,7 @@ export default {
       this.$nuxt.$loading.start();
       this.$store
         .dispatch("calls/register", {
-          // Enviamos un objeto, denotado por {}, que contiene el nombre, username, email y password
+          // Enviamos un objeto, denotado por {}
           image: this.filename,
           name: this.name,
           surname: this.surname,

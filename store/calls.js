@@ -20,13 +20,8 @@ export const actions = {
       commit('SET_USER_DATA', data)
     })
   },
-  nuxtClientInit({ commit }, { req }) {
-    const userString = localStorage.getItem('user') // grab user data from local storage
-    if (userString) {
-      // check to see if there is indeed a user
-      const userData = JSON.parse(userString) // parse user data into JSON
-      commit('SET_USER_DATA', userData) // restore user data with Vuex
-    }
+  getAdmins({ commit }) {
+    return Service.getAdmins()
   }
 }
 export const getters = {
