@@ -18,6 +18,6 @@ export default {
     return ip
   },
   setToken(userData) {
-    axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`
+    //axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`
   }
 }
