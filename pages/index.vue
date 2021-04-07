@@ -26,7 +26,9 @@
         <v-btn depressed @click="axiosGetAdmins">Descargar</v-btn>
       </v-col>
       <v-col cols="2">
-        <v-btn depressed color="primary" to="agregarAdministrador" nuxt>Agrergar nuevo admin</v-btn>
+        <v-btn depressed color="primary" to="agregarAdministrador" nuxt
+          >Agrergar nuevo admin</v-btn
+        >
       </v-col>
     </v-row>
     <v-row>
@@ -59,7 +61,7 @@ export default {
           sortable: false,
           value: "name",
         },
-        { text: "Apellido(s)", value: "surname",},
+        { text: "Apellido(s)", value: "surname" },
         { text: "Correo electrónico", value: "email" },
         { text: "Área", value: "area" },
         { text: "Estatus", value: "estatus" },
@@ -68,28 +70,23 @@ export default {
       admins: [],
     };
   },
-   methods: {
-      getColor (estatus) {
-        if (estatus == "Activo") return 'green'
-        else return 'red'
-      },
-      axiosGetAdmins(){
-        this.$nuxt.$loading.start()
-      this.$store
-        .dispatch('calls/getAdmins')
-        .then((response) => {
-          this.$nuxt.$loading.finish()
-          console.log(response.data)
-          this.admins = response.data
-        })
-        .catch(() => {
-          this.$nuxt.$loading.fail()
-          this.$nuxt.$loading.finish()
-        })
-      }
+  methods: {
+    getColor(estatus) {
+      if (estatus == "Activo") return "green";
+      else return "red";
     },
-    mounted(){
-      this.axiosGetAdmins()
-    }
+    axiosGetAdmins() {
+      this.$store
+        .dispatch("calls/getAdmins")
+        .then((response) => {
+          this.$nuxt.$loading.finish();
+          console.log(response.data);
+          this.admins = response.data;
+        })
+    },
+  },
+  mounted() {
+    this.axiosGetAdmins();
+  },
 };
 </script>
